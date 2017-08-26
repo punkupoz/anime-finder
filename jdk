@@ -1,0 +1,142 @@
+[1mdiff --git a/src/AnimeInfoPage.css b/src/AnimeInfoPage.css[m
+[1mindex e4d76b9..c180d52 100644[m
+[1m--- a/src/AnimeInfoPage.css[m
+[1m+++ b/src/AnimeInfoPage.css[m
+[36m@@ -1,19 +1,58 @@[m
+ header {[m
+ 	background-color: #4092DD;[m
+ 	height: 3em;[m
+[32m+[m	[32mposition: relative;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mheader label {[m
+[32m+[m	[32mcolor: white;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mheader form {[m
+[32m+[m	[32mtext-align: center;[m
+[32m+[m	[32mdisplay: inline-block;[m
+[32m+[m	[32mwidth: 100%;[m
+[32m+[m	[32mmargin-top:0.5em;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mheader form input[type="number"] {[m
+[32m+[m	[32mwidth: 70%;[m
+[32m+[m	[32m-moz-border-radius:28px;[m
+[32m+[m	[32m-webkit-border-radius:28px;[m
+[32m+[m	[32mborder-radius:28px;[m
+[32m+[m	[32mborder:1px solid #1954ab;[m[41m [m
+[32m+[m	[32mpadding: 5px 10px;[m
+[32m+[m[32m}[m
+[32m+[m[32m/*header form input[type="submit"] {[m
+[32m+[m	[32mwidth: 20%;[m
+[32m+[m[32m}*/[m
+[32m+[m[32mheader form input[type="submit"] {[m
+[32m+[m	[32mbackground-color:#3459D2;[m
+[32m+[m	[32m-moz-border-radius:28px;[m
+[32m+[m	[32m-webkit-border-radius:28px;[m
+[32m+[m	[32mborder-radius:28px;[m
+[32m+[m	[32mborder:1px solid #1954ab;[m
+[32m+[m	[32mdisplay:inline-block;[m
+[32m+[m	[32mcursor:pointer;[m
+[32m+[m	[32mcolor:#ffffff;[m
+[32m+[m	[32mfont-family:Arial;[m
+[32m+[m	[32mfont-size:17px;[m
+[32m+[m	[32mfont-weight:bold;[m
+[32m+[m	[32mpadding:4px 18px;[m
+[32m+[m	[32mtext-decoration:none;[m
+[32m+[m	[32mtext-shadow:0px 1px 0px #2f6627;[m
+[32m+[m	[32mmargin-left: 1em;[m
+[32m+[m[32m}[m
+[32m+[m[32mheader form input[type="submit"]:hover {[m
+[32m+[m	[32mbackground-color:#edd84c;[m
+[32m+[m[32m}[m
+[32m+[m[32mheader form input[type="submit"]:active {[m
+[32m+[m	[32mposition:relative;[m
+[32m+[m	[32mtop:1px;[m
+ }[m
+ [m
+ #title {[m
+ 	background-color: #fff;[m
+ 	border-top:1em #3459D2 solid;[m
+ 	height: 2em;[m
+[31m-}[m
+[31m-[m
+[31m-#main-image{[m
+[31m-	position: relative;[m
+[31m-	background-color: #eee;[m
+[31m-	width: 390px;[m
+[31m-	height: 554px;[m
+[31m-	margin-right: auto;[m
+[31m-	margin-left: auto;[m
+[31m-}[m
+[32m+[m[32m}[m
+\ No newline at end of file[m
+[1mdiff --git a/src/AnimeInfoPage.js b/src/AnimeInfoPage.js[m
+[1mindex cc19187..ad63a3e 100644[m
+[1m--- a/src/AnimeInfoPage.js[m
+[1m+++ b/src/AnimeInfoPage.js[m
+[36m@@ -21,8 +21,6 @@[m [mexport default class AnimeInfoPage extends Component {[m
+ 		this.setState({[m
+ 			anid: event.target.value,[m
+ 		});[m
+[31m-[m
+[31m-		console.log(event.target.value);[m
+ 	}[m
+ 	handleIdSubmit(event){[m
+ 		this.getAnime();[m
+[36m@@ -43,7 +41,7 @@[m [mexport default class AnimeInfoPage extends Component {[m
+ 				response.json().then((data) => {[m
+ 					var attr = data.data.attributes;[m
+ 					var episodes = [];[m
+[31m-					if(data.included!=undefined){[m
+[32m+[m					[32mif(data.included!==undefined){[m
+ 						episodes.push({id:0, col1:"Episodes", col2:"Release"});[m
+ 						var ilength = data.included.length;[m
+ [m
+[36m@@ -83,17 +81,11 @@[m [mexport default class AnimeInfoPage extends Component {[m
+ 			<div>[m
+ 			<header>[m
+ 				<form onSubmit={this.handleIdSubmit}>[m
+[31m-				<label>[m
+[31m-				ID:[m
+[31m-					<input type="text" value={this.state.anid} onChange={this.handleIdChange}/>[m
+[31m-				</label>[m
+[31m-					<input type="submit" value="Submit" />[m
+[32m+[m					[32m<input type="number" onChange={this.handleIdChange} placeholder="Anime ID"/>[m
+[32m+[m					[32m<input type="submit" value="Find" />[m
+ 				</form>[m
+ 			</header>[m
+[31m-			<div id="title">[m
+[31m-			title[m
+[31m-			</div>[m
+[31m-			[m
+[32m+[m
+ 			<MainImage imagesrc={this.state.img}/>[m
+ [m
+ 			<InfoTable info={this.state.info} episodes={this.state.episodes}/>[m
+[36m@@ -105,4 +97,3 @@[m [mexport default class AnimeInfoPage extends Component {[m
+ 	[m
+ }[m
+ [m
+[31m-[m
+[1mdiff --git a/src/InfoTable.js b/src/InfoTable.js[m
+[1mindex 37b9041..ff8c497 100644[m
+[1m--- a/src/InfoTable.js[m
+[1m+++ b/src/InfoTable.js[m
+[36m@@ -1,4 +1,4 @@[m
+[31m-import React, { Component } from 'react';[m
+[32m+[m[32mimport React from 'react';[m
+ import DefaultTable from './DefaultTable.js';[m
+ [m
+ [m
+[1mdiff --git a/src/MainImage.js b/src/MainImage.js[m
+[1mindex 828fca4..0c5f934 100644[m
+[1m--- a/src/MainImage.js[m
+[1m+++ b/src/MainImage.js[m
+[36m@@ -1,4 +1,4 @@[m
+[31m-import React, { Component } from 'react';[m
+[32m+[m[32mimport React from 'react';[m
+ import './MainImage.css';[m
+ [m
+ [m

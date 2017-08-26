@@ -21,8 +21,6 @@ export default class AnimeInfoPage extends Component {
 		this.setState({
 			anid: event.target.value,
 		});
-
-		console.log(event.target.value);
 	}
 	handleIdSubmit(event){
 		this.getAnime();
@@ -43,7 +41,7 @@ export default class AnimeInfoPage extends Component {
 				response.json().then((data) => {
 					var attr = data.data.attributes;
 					var episodes = [];
-					if(data.included!=undefined){
+					if(data.included!==undefined){
 						episodes.push({id:0, col1:"Episodes", col2:"Release"});
 						var ilength = data.included.length;
 
@@ -83,17 +81,11 @@ export default class AnimeInfoPage extends Component {
 			<div>
 			<header>
 				<form onSubmit={this.handleIdSubmit}>
-				<label>
-				ID:
-					<input type="text" value={this.state.anid} onChange={this.handleIdChange}/>
-				</label>
-					<input type="submit" value="Submit" />
+					<input type="number" onChange={this.handleIdChange} placeholder="Anime ID"/>
+					<input type="submit" value="Find" />
 				</form>
 			</header>
-			<div id="title">
-			title
-			</div>
-			
+
 			<MainImage imagesrc={this.state.img}/>
 
 			<InfoTable info={this.state.info} episodes={this.state.episodes}/>
@@ -104,5 +96,4 @@ export default class AnimeInfoPage extends Component {
 	}
 	
 }
-
 
