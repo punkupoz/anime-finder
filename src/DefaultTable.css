@@ -1,0 +1,32 @@
+#info td {
+  border-bottom: 1px solid #3459D2;
+  padding: 5px;
+}
+
+#info td:first-child{
+  border-right: 4px solid #3459D2;
+}
+
+#info table {
+  margin-top: 1em;
+  border-collapse: collapse;
+  width: 100%;
+
+}
+
+#info tr:nth-child(odd){
+  background-color: #eee;
+}
+
+#info caption {
+  background-color: #3459D2;
+  padding: 0.2em;
+  color:#ffffff;
+  font-size: 1.2em;
+}
+
+#info {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}

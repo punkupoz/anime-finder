@@ -1,0 +1,13 @@
+#main-image{
+	position: relative;
+	background-color: #eee;
+	width: 390px;
+	height: 554px;
+	margin-right: auto;
+	margin-left: auto;
+}
+img {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}

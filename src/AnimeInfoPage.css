@@ -1,0 +1,19 @@
+header {
+	background-color: #4092DD;
+	height: 3em;
+}
+
+#title {
+	background-color: #fff;
+	border-top:1em #3459D2 solid;
+	height: 2em;
+}
+
+#main-image{
+	position: relative;
+	background-color: #eee;
+	width: 390px;
+	height: 554px;
+	margin-right: auto;
+	margin-left: auto;
+}
